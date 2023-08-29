@@ -8,6 +8,8 @@ class Blockchain {
 private:
     std::vector<Block> chain;
     std::vector<Transaction> pendingTransactions;
+    std::unordered_map<std::string, RSA*> publicKeyMap; // New map for public keys
+
 
 public:
     Blockchain();
@@ -17,5 +19,5 @@ public:
     bool isTransactionValid(const Transaction& tx);
     bool isChainValid();
     void printChain();
-    void notifyWallets(std::vector<Wallet>& wallets);
+    void notifyWallets(std::vector<Wallet*>& wallets);
 };

@@ -48,7 +48,3 @@ This project is a simple implementation of a blockchain with basic wallet functi
 
 - C++ Standard Library
 - OpenSSL for SHA-256 Hashing
-
----
-
-Feel free to add or remove sections as you see fit!

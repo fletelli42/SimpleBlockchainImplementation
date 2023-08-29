@@ -39,7 +39,8 @@ bool Blockchain::isChainValid() {
         }
 
         for (const auto& tx : currBlock.transactions) {
-            if (!isTransactionValid(tx)) {
+            RSA* publicKey = publicKeyMap[tx.sender];  // Retrieve publicKey based on tx.sender
+            if (!tx.isValid(publicKey)) {
                 return false;
             }
         }
@@ -47,25 +48,33 @@ bool Blockchain::isChainValid() {
     return true;
 }
 
+
+
 void Blockchain::printChain() {
     for (const auto& block : chain) {
         std::cout << "Block Timestamp: " << block.timestamp << std::endl;
         std::cout << "Previous Hash: " << block.prevHash << std::endl;
         std::cout << "Block Hash: " << block.blockHash << std::endl;
         std::cout << "Transactions:" << std::endl;
+        
         for (const auto& tx : block.transactions) {
             std::cout << "  Sender: " << tx.sender << " Receiver: " << tx.receiver << " Amount: " << tx.amount << std::endl;
         }
+        
+        std::cout << "Nonce: " << block.nonce << std::endl;  // Display the nonce
         std::cout << std::endl;
     }
 }
 
-void Blockchain::notifyWallets(std::vector<Wallet>& wallets) {
+void Blockchain::notifyWallets(std::vector<Wallet*>& wallets) {
+
     for (auto& wallet : wallets) {
+        publicKeyMap[wallet->id] = wallet->publicKey;  // Store the public key in the map
         for (auto& block : chain) {
-            wallet.updateBalance(block.transactions);
+            wallet->updateBalance(block.transactions);
         }
     }
 }
+
 
 
