@@ -1,92 +1,90 @@
-# Simple Blockchain Implementation in C++
+# Simple Blockchain in C++
 
-## Overview
+This code base provides a minimal implementation of a blockchain in C++.
 
-This C++ program demonstrates a simplified implementation of a blockchain. It uses the SHA-256 hashing algorithm for creating block hashes and includes functionalities for transaction handling and blockchain validation.
+## Features
 
-## Classes Explained
+1. **Transaction Management**: Handles transactions between different addresses.
+2. **Block Creation**: Allows for the addition of new blocks to the blockchain.
+3. **Blockchain Validation**: Validates the integrity of the blockchain.
+4. **Basic Proof-of-Work (PoW)**: Implements a basic PoW algorithm for mining new blocks.
+5. **Modular Code**: The code is divided into separate files for easy maintenance and readability.
 
-### Transaction Class
+## Prerequisites
 
-- `sender`: The address of the sender
-- `receiver`: The address of the receiver
-- `amount`: Amount of currency being sent
+- C++11 or later
+- OpenSSL Library for SHA-256 Hashing
 
-#### Constructor
-Initializes a new Transaction object.
+## Components
 
-### Block Class
+### Transaction
 
-- `prevHash`: Hash of the previous block
-- `blockHash`: Hash of this block
-- `transactions`: Vector holding transactions
-- `timestamp`: Block creation time in UNIX timestamp
-- `nonce`: Arbitrary value used for mining
-- `difficulty`: The difficulty level for mining
+This class represents a transaction in the blockchain. It includes:
 
-#### Constructor
-Initializes a new Block object and mines it immediately.
+- Sender's address
+- Receiver's address
+- Amount being transacted
 
-#### `mineBlock()`
-Mines the block by finding a hash that meets the required difficulty level. 
+### Block
 
-#### `generateHash()`
-Generates the hash of the block based on its contents and the nonce.
+This class represents a block in the blockchain. Each block contains:
 
-### Blockchain Class
+- The hash of the previous block (except for the Genesis block)
+- A list of transactions
+- A timestamp indicating when the block was created
+- A nonce and difficulty level for mining
+- The hash of the block itself
 
-- `chain`: Vector holding the blockchain
-- `pendingTransactions`: Vector holding pending transactions
+### Blockchain
 
-#### Constructor
-Initializes with a genesis block.
+This class manages the blockchain and includes features for:
 
-#### `createTransaction()`
-Adds a new transaction to pending transactions.
+- Creating transactions
+- Mining new blocks
+- Validating the integrity of the blockchain
 
-#### `minePendingTransactions()`
-Mines the pending transactions into a new block.
+## Setup and Compilation
 
-#### `isBlockHashValid()`
-Validates the hash of a block.
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Compile the code using `g++`:
 
-#### `isTransactionValid()`
-Validates individual transactions.
+    ```bash
+    g++ main.cpp Block.cpp Blockchain.cpp Transaction.cpp -o blockchain -lcrypto
+    ```
 
-#### `isChainValid()`
-Validates the integrity of the entire blockchain.
+    This assumes that you have OpenSSL installed (`-lcrypto` links against the OpenSSL crypto library).
 
-## Compilation Instructions
+## Execution
 
-Make sure you have OpenSSL installed on your system for the SHA-256 hashing.
-
-```bash
-g++ main.cpp -o blockchain -lssl -lcrypto
-```
-
-## Running the Program
-
-Execute the compiled program:
+Run the compiled output:
 
 ```bash
 ./blockchain
 ```
 
-This will:
+## Output
 
-1. Create a blockchain with a genesis block.
-2. Add new transactions from Alice to Bob and from Bob to Charlie.
-3. Mine these transactions into a new block.
-4. Validate the blockchain.
-5. Print the blockchain to the console.
+The program will:
 
-## Limitations
+- Create a new blockchain
+- Add some transactions to the pending transaction list
+- Mine these transactions into a new block
+- Validate the blockchain
+- Print the entire blockchain
 
-- Does not include cryptographic proof for transactions.
-- Simplified for educational purposes; not to be used in production.
+## License
 
-## Future Scope
+This project is open source, under the MIT License.
 
-- Adding peer-to-peer network functionality.
-- Introduce cryptographic proof for transactions.
-- Enhance the validation checks for each transaction and block.
+## Contributions
+
+Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you'd like to change.
+
+## Acknowledgements
+
+- The OpenSSL library for providing the SHA-256 hash function.
+
+---
+
+This README provides a basic outline and can be extended based on additional features, usage instructions, or other relevant information as the project grows.
