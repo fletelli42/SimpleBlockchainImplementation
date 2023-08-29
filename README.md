@@ -19,7 +19,6 @@ This project is a simple implementation of a blockchain with basic wallet functi
 
 6. **Wallet Balance Notification**: After mining a block, wallet balances can be updated based on the transactions in the blockchain.
 
-Certainly! Here's an updated README section that explains how to build and run your project using the Makefile.
 
 ---
 
