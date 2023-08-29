@@ -12,9 +12,12 @@ void debugPrintHash(unsigned char* hash, size_t length) {
     }
     std::cout << std::endl;
 }
+// Constructor to initialize a Transaction
 
 Transaction::Transaction(std::string sender, std::string receiver, float amount, int nonce)
     : sender(sender), receiver(receiver), amount(amount), nonce(nonce) {}
+
+// Method to sign a transaction
 
 void Transaction::sign(RSA* privateKey) {
 
@@ -37,6 +40,9 @@ void Transaction::sign(RSA* privateKey) {
 
     std::cout << "Signed successfully. Signature Length: " << signatureLength << "\n";
 }
+
+
+// Check overall validity of the transaction
 
 bool Transaction::verify(RSA* publicKey) const {
 

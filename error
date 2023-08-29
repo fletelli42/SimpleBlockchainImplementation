@@ -1,0 +1,52 @@
+main.cpp:40:16: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    for (const auto& wallet : wallets) {
+               ^
+main.cpp:40:29: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+    for (const auto& wallet : wallets) {
+                            ^
+2 warnings generated.
+Block.cpp:27:16: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    for (const auto& tx : transactions) {
+               ^
+Block.cpp:27:25: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+    for (const auto& tx : transactions) {
+                        ^
+2 warnings generated.
+Blockchain.cpp:41:20: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+        for (const auto& tx : currBlock.transactions) {
+                   ^
+Blockchain.cpp:41:29: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+        for (const auto& tx : currBlock.transactions) {
+                            ^
+Blockchain.cpp:54:16: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    for (const auto& block : chain) {
+               ^
+Blockchain.cpp:54:28: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+    for (const auto& block : chain) {
+                           ^
+Blockchain.cpp:60:20: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+        for (const auto& tx : block.transactions) {
+                   ^
+Blockchain.cpp:60:29: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+        for (const auto& tx : block.transactions) {
+                            ^
+Blockchain.cpp:71:10: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    for (auto& wallet : wallets) {
+         ^
+Blockchain.cpp:71:23: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+    for (auto& wallet : wallets) {
+                      ^
+Blockchain.cpp:73:14: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+        for (auto& block : chain) {
+             ^
+Blockchain.cpp:73:26: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+        for (auto& block : chain) {
+                         ^
+10 warnings generated.
+Wallet.cpp:62:16: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    for (const auto& tx : transactions) {
+               ^
+Wallet.cpp:62:25: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+    for (const auto& tx : transactions) {
+                        ^
+2 warnings generated.

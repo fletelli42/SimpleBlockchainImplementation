@@ -6,20 +6,24 @@
 
 class Transaction {
 public:
-    std::string sender;
-    std::string receiver;
-    float amount;
-    std::string signature;
-    int nonce;
-    unsigned int signatureLength;  // Add this line
+    std::string sender; // Sender's wallet ID
+    std::string receiver; // Receiver's wallet ID
+    float amount; // Amount of money transferred
+    std::string signature; // Digital signature for this transaction
+    int nonce; // Nonce for transaction, can be used for security or versioning
+    unsigned int signatureLength; // Length of the digital signature
 
-
-
+    // Constructor to initialize the transaction
     Transaction(std::string sender, std::string receiver, float amount, int nonce);
-    void sign(RSA* privateKey);  // Sign the transaction
-    bool verify(RSA* publicKey) const;  // Verify the transaction
-    bool isValid(RSA* publicKey) const;  // Check overall validity
 
+    // Method to sign the transaction with the sender's private key
+    void sign(RSA* privateKey);
+
+    // Method to verify the transaction using the sender's public key
+    bool verify(RSA* publicKey) const;
+
+    // Method to check overall validity of the transaction
+    bool isValid(RSA* publicKey) const;
 };
 
 #endif // TRANSACTION_H

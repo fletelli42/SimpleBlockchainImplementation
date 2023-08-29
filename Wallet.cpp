@@ -3,9 +3,14 @@
 #include <openssl/rand.h>
 #include <openssl/pem.h>
 
+// Constructor to initialize a Wallet with given ID
+
 Wallet::Wallet(std::string id) : id(id), balance(0.0f), privateKey(nullptr), publicKey(nullptr) {
     generateKeys();
 }
+
+// Destructor to free RSA key pairs
+
 
 Wallet::~Wallet() {
    if (privateKey) {
@@ -19,6 +24,7 @@ if (publicKey) {
 
 }
 
+// Method to generate RSA key pairs
 
 void Wallet::generateKeys() {
     privateKey = RSA_new();
@@ -46,6 +52,7 @@ void Wallet::generateKeys() {
         free(publicKeyStr); // Don't forget to free allocated memory
 }
 
+// Method to send funds to another wallet
 
 Transaction Wallet::sendFunds(Wallet& receiver, float amount) {
     // Generate a nonce (for simplicity, this could be a random number)
@@ -57,6 +64,7 @@ Transaction Wallet::sendFunds(Wallet& receiver, float amount) {
 
     return tx;
 }
+// Method to update balance based on the blockchain transactions
 
 void Wallet::updateBalance(const std::vector<Transaction>& transactions) {
     for (const auto& tx : transactions) {
@@ -68,6 +76,7 @@ void Wallet::updateBalance(const std::vector<Transaction>& transactions) {
         }
     }
 }
+// Method to print wallet details
 
 void Wallet::printWalletData() const {
     std::cout << "Wallet ID: " << id << std::endl;
