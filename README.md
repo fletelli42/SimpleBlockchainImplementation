@@ -19,16 +19,57 @@ This project is a simple implementation of a blockchain with basic wallet functi
 
 6. **Wallet Balance Notification**: After mining a block, wallet balances can be updated based on the transactions in the blockchain.
 
-## How to Run
+Certainly! Here's an updated README section that explains how to build and run your project using the Makefile.
 
-1. Compile all the `.cpp` files. If you have `g++`, you can compile by running: 
-    ```bash
-    g++ *.cpp -o blockchain
+---
+
+## How to Build and Run the Project
+
+This project uses a Makefile to automate the build process. Follow these steps to build and run the project:
+
+### Prerequisites
+
+- Make sure you have `g++` and `make` installed on your system.
+- OpenSSL library is required for cryptographic functions. Install it if you haven't done so already:
+  - **Ubuntu/Debian**: `sudo apt-get install libssl-dev`
+  - **macOS with Homebrew**: `brew install openssl`
+  - **Windows**: You may need to download and install it manually from [OpenSSL's website](https://www.openssl.org/source/).
+
+### Building the Project
+
+1. **Clone the repository** to your local machine:
     ```
-2. Execute the output file:
-    ```bash
-    ./blockchain
+    git clone https://github.com/BlockchainProphet/SimpleBlockchainImplementation.git
     ```
+
+2. **Navigate to the project directory**:
+    ```
+    cd SimpleBlockchainImplementation
+    ```
+
+3. **Run the Makefile**:
+    ```
+    make
+    ```
+    This will compile all the necessary files and create an executable named `blockchain_app`.
+
+### Running the Project
+
+After successful build, you can run the project by executing:
+
+```
+./blockchain_app
+```
+
+
+### Cleaning Up
+
+If you want to remove all the compiled files and the generated executable, run:
+
+```
+make clean
+```
+
 
 ## Code Structure
 

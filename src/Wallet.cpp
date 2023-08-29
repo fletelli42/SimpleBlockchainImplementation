@@ -5,7 +5,7 @@
 
 // Constructor to initialize a Wallet with given ID
 
-Wallet::Wallet(std::string id) : id(id), balance(0.0f), privateKey(nullptr), publicKey(nullptr) {
+Wallet::Wallet(std::string id) : id(id), balance(0.0f), publicKey(nullptr), privateKey(nullptr) {
     generateKeys();
 }
 
