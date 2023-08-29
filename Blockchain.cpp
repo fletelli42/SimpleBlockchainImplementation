@@ -1,4 +1,5 @@
 #include "Blockchain.h"
+#include "Wallet.h"
 #include <iostream>
 
 Blockchain::Blockchain() {
@@ -58,3 +59,13 @@ void Blockchain::printChain() {
         std::cout << std::endl;
     }
 }
+
+void Blockchain::notifyWallets(std::vector<Wallet>& wallets) {
+    for (auto& wallet : wallets) {
+        for (auto& block : chain) {
+            wallet.updateBalance(block.transactions);
+        }
+    }
+}
+
+

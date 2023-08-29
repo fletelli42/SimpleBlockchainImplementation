@@ -2,6 +2,7 @@
 #include <vector>
 #include "Block.h"
 #include "Transaction.h"
+#include "Wallet.h"
 
 class Blockchain {
 private:
@@ -16,4 +17,5 @@ public:
     bool isTransactionValid(const Transaction& tx);
     bool isChainValid();
     void printChain();
+    void notifyWallets(std::vector<Wallet>& wallets);
 };

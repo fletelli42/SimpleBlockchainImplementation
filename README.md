@@ -1,90 +1,54 @@
-# Simple Blockchain in C++
 
-This code base provides a minimal implementation of a blockchain in C++.
+# Simple Blockchain Implementation in C++
+
+## Overview
+
+This project is a simple implementation of a blockchain with basic wallet functionality. The blockchain contains blocks, where each block contains multiple transactions. Wallets can perform transactions, sending and receiving funds, which are then added to the blockchain.
 
 ## Features
 
-1. **Transaction Management**: Handles transactions between different addresses.
-2. **Block Creation**: Allows for the addition of new blocks to the blockchain.
-3. **Blockchain Validation**: Validates the integrity of the blockchain.
-4. **Basic Proof-of-Work (PoW)**: Implements a basic PoW algorithm for mining new blocks.
-5. **Modular Code**: The code is divided into separate files for easy maintenance and readability.
+1. **Basic Blockchain**: Create a blockchain and add blocks to it. Each block has a hash, a timestamp, and a list of transactions.
 
-## Prerequisites
+2. **Mining**: Blocks have a `mineBlock()` function that solves a proof-of-work problem.
 
-- C++11 or later
-- OpenSSL Library for SHA-256 Hashing
+3. **Wallets**: Wallets with unique IDs can send and receive funds.
 
-## Components
+4. **Transaction Validation**: Transactions are only valid if the wallet has sufficient balance.
 
-### Transaction
+5. **Blockchain Integrity Check**: Check if the blockchain is valid based on previous and current block hashes.
 
-This class represents a transaction in the blockchain. It includes:
+6. **Wallet Balance Notification**: After mining a block, wallet balances can be updated based on the transactions in the blockchain.
 
-- Sender's address
-- Receiver's address
-- Amount being transacted
+## How to Run
 
-### Block
-
-This class represents a block in the blockchain. Each block contains:
-
-- The hash of the previous block (except for the Genesis block)
-- A list of transactions
-- A timestamp indicating when the block was created
-- A nonce and difficulty level for mining
-- The hash of the block itself
-
-### Blockchain
-
-This class manages the blockchain and includes features for:
-
-- Creating transactions
-- Mining new blocks
-- Validating the integrity of the blockchain
-
-## Setup and Compilation
-
-1. Clone this repository.
-2. Navigate to the project directory.
-3. Compile the code using `g++`:
-
+1. Compile all the `.cpp` files. If you have `g++`, you can compile by running: 
     ```bash
-    g++ main.cpp Block.cpp Blockchain.cpp Transaction.cpp -o blockchain -lcrypto
+    g++ *.cpp -o blockchain
+    ```
+2. Execute the output file:
+    ```bash
+    ./blockchain
     ```
 
-    This assumes that you have OpenSSL installed (`-lcrypto` links against the OpenSSL crypto library).
+## Code Structure
 
-## Execution
+1. `main.cpp`: The driver program that demonstrates blockchain and wallet functionalities.
+2. `Blockchain.cpp` and `Blockchain.h`: Contains the `Blockchain` class that manages blocks and transactions.
+3. `Block.cpp` and `Block.h`: Defines the `Block` class for individual blocks in the blockchain.
+4. `Transaction.cpp` and `Transaction.h`: Contains the `Transaction` class that represents transactions between wallets.
+5. `Wallet.cpp` and `Wallet.h`: Contains the `Wallet` class that can send funds and update balances.
 
-Run the compiled output:
+## Recent Updates
 
-```bash
-./blockchain
-```
+- Added wallet functionality for sending and receiving funds.
+- Wallets are notified and updated after each block is mined.
+- Improved the integrity check for the blockchain.
 
-## Output
+## Dependencies
 
-The program will:
-
-- Create a new blockchain
-- Add some transactions to the pending transaction list
-- Mine these transactions into a new block
-- Validate the blockchain
-- Print the entire blockchain
-
-## License
-
-This project is open source, under the MIT License.
-
-## Contributions
-
-Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you'd like to change.
-
-## Acknowledgements
-
-- The OpenSSL library for providing the SHA-256 hash function.
+- C++ Standard Library
+- OpenSSL for SHA-256 Hashing
 
 ---
 
-This README provides a basic outline and can be extended based on additional features, usage instructions, or other relevant information as the project grows.
+Feel free to add or remove sections as you see fit!
